@@ -1,5 +1,6 @@
-from PyQt5.QtWidgets import QTreeWidget
-from os import listdir
+from PyQt5.QtWidgets import QTreeWidget, QTreeWidgetItem
+import pathlib
+
 import glob
 
 
@@ -9,8 +10,15 @@ class MemoModules:
 
     def load_initial_memos(self, tree_widget=None):
         print('load initial memos')
-
         file_arr = glob.glob('memos/*.txt')
 
-        print(file_arr)
+        file_info = []
 
+        for file in file_arr:
+            fname = pathlib.Path(file)
+
+
+        file_arr = [QTreeWidgetItem(file_name.replace('memos\\', '') for file_name in file_arr)]
+
+
+        tree_widget.addTopLevelItems(file_arr)

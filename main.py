@@ -15,7 +15,7 @@ class WindowClass(QMainWindow, form_main):
     def __init__(self):
         super().__init__(flags=Qt.Window)
         self.setupUi(self)
-        MemoModules().load_initial_memos()
+        MemoModules().load_initial_memos(self.memo_tree)
 
 
 if __name__ == "__main__":
