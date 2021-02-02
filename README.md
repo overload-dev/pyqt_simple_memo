@@ -1,0 +1,1 @@
+# pyqt_simple_memo
