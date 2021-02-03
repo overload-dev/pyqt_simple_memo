@@ -1,4 +1,0 @@
-TEST MEMO CONTENT1111
-
-
-Alert python
