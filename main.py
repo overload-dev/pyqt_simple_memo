@@ -33,6 +33,7 @@ class WindowClass(QMainWindow, form_main):
         self.btn_save.setDisabled(True)
         self.btn_save.clicked.connect(self._save_memo)
         self.btn_del.setDisabled(True)
+        self.btn_del.clicked.connect(self._delete_memo)
         self._flag_savable = False
         self._flag_memo_modified = False
 
@@ -41,6 +42,15 @@ class WindowClass(QMainWindow, form_main):
         self._selected_memo = None
         self.memo_title.clear()
         self.memo_content.clear()
+        self._flag_savable = False
+        self.btn_del.setDisabled(True)
+        self._flag_memo_modified = False
+
+    def _delete_memo(self):
+        no = self._selected_memo.data(0, Qt.UserRole)
+        self.memo_model.delete(no)
+        self.memo_tree.takeTopLevelItem(self.memo_tree.indexFromItem(self._selected_memo, 0).row())
+        self._new_memo_mode()
 
     def _save_memo(self):
         date = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
@@ -59,8 +69,6 @@ class WindowClass(QMainWindow, form_main):
             item.setData(0, Qt.UserRole, memo.attrib['no'])
             self._change_memo(item)
         else:
-            print(self._selected_memo.data(0, Qt.UserRole))
-
             self.memo_model.update(
                 self._selected_memo.data(0, Qt.UserRole),
                 self.memo_title.text(),

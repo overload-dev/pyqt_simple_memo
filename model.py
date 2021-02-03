@@ -40,3 +40,9 @@ class MemoModel:
         origin.append(node_memo)
         self.memo_elements.write('memos/memos.xml')
         return no
+
+    def delete(self, no):
+        origin = self.memo_elements.getroot()
+        del_memo = self.memo_elements.getroot().find('./memo[@no=\'%s\']' % no)
+        origin.remove(del_memo)
+        self.memo_elements.write('memos/memos.xml')
