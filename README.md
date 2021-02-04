@@ -26,8 +26,7 @@ The schema of the saved memo is as follows.</br>
 * * *
 
 ## 3. Install required packages
-- 
-Python3+ (The version of Python used when making this program is 3.9)
+- Python3+ (The version of Python used when making this program is 3.9)
 - PyQt (PyQt5)
 - Pyinstaller
 
